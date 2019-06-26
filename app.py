@@ -28,7 +28,7 @@ def generate_table(dataframe, max_rows=10):
     )
    
 app = dash.Dash()
-
+server = app.server
 app.layout = html.Div([
     html.H1(
         children='Welcome to Meter Identification System',
