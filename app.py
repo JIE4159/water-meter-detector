@@ -13,8 +13,7 @@ import dash_html_components as html
 
 import pandas as pd
 
-df = pd.read_csv(
-    'results1.csv')
+df = pd.read_csv('results1.csv')
 
 def generate_table(dataframe, max_rows=10):
     return html.Table(
