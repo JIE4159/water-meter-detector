@@ -65,7 +65,7 @@ app.layout = html.Div([
             style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
     ]),
         html.Label('Result:',style={'color':'red','font-size':'15px'}),
-        html.Div(id='tablecontainer',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
+        html.Div(id='tablecontainer',value='',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
     ])
 
 
