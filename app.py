@@ -14,8 +14,7 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-df = pd.read_csv(
-    'C:/Users/xiong/Desktop/dash_app_example/results1.csv')
+df = pd.read_csv(results1.csv')
 
 def generate_table(dataframe, max_rows=len(df)):
     return html.Table(
