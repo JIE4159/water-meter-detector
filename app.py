@@ -4,8 +4,6 @@ Created on Tue Jun 25 17:29:12 2019
 
 @author: xiong
 """
-
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -14,7 +12,7 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-df = pd.read_csv(results1.csv')
+df = pd.read_csv('results1.csv')
 
 def generate_table(dataframe, max_rows=len(df)):
     return html.Table(
@@ -50,7 +48,8 @@ app.layout = html.Div(style={'backgroundColor':'080808'},children=[
     html.Div([
                     
         html.Label('Input Your Meter ID'),
-        dcc.Input(id='box1',type='number',value=None,style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"},placeholder="Input Your Meter ID"),
+        dcc.Dropdown(id='box1',style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"},placeholder="Input Your Meter ID",
+                     options=[{'label': i, 'value': i} for i in set(df.Meter_id)]),
         html.Label('OR',style={'color':'red','font-size':'15px'}),
         html.Label('Select Your Meter Size'),
         dcc.Dropdown(
