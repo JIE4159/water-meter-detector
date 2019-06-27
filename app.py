@@ -78,9 +78,8 @@ app.layout = html.Div(style={'backgroundColor':'080808'},children=[
 
 def update_table(dropdown1,dropdown2,box1):
     if box1 is not None:
-        box2=float(box1)
-        if box2 in (set(df.Meter_id)):
-            dff=df[df.Meter_id==box2]
+        if box1 in (set(df.Meter_id)):
+            dff=df[df.Meter_id==box1]
             return generate_table(dff)
         else:
             return 'Please input a right meter ID.'
