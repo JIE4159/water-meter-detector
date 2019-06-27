@@ -6,14 +6,13 @@ Created on Tue Jun 25 17:29:12 2019
 """
 
 
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
 import pandas as pd
 
-df = pd.read_csv('results1.csv')
+df = pd.read_csv(results1.csv')
 
 def generate_table(dataframe, max_rows=10):
     return html.Table(
@@ -27,33 +26,46 @@ def generate_table(dataframe, max_rows=10):
     )
    
 app = dash.Dash()
-server = app.server
+server=app.server
+app.config['suppress_callback_exceptions']=True
+markdown_text = '''
+### Dash Title Here
+
+Dash uses the [CommonMark](http://commonmark.org/)
+specification of Markdown.
+Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
+if this is your first introduction to Markdown!
+'''
 app.layout = html.Div([
     html.H1(
-        children='Welcome to Meter Identification System',
+        children='Smart Meter: Anomaly Detector',
         style={
-            'textAlign': 'center','backgroundColor':'green',}
+            'textAlign': 'left','backgroundColor':'#80ced6','font_family':'italic','font-size':'50px','text-indent': '3%'}
     ),
-
+    html.H2('Welcome to Meter Identification System. Less Loss, More Gain.',
+            style={
+            'textAlign': 'center','color':'red','font-size':'30px','text-indent':'50px'}),
     html.Div([
+                    
+        html.Label('Input Your Meter ID'),
+        dcc.Input(id='box1',type='number',style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"}),
+        html.Label('OR',style={'color':'red','font-size':'15px'}),
         html.Label('Select Your Meter Size'),
         dcc.Dropdown(
             id='dropdown1',
             options=[{'label': i, 'value': i} for i in [ 1.   ,  3.   ,  0.625,  2.   ,  4.   ,  0.75 ,  1.5  ,  6.   ,
-       10.   ,  8. ]]
-        ),
+       10.   ,  8. ]],style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"}),
+    
         html.Label('Select Your Customer Type'),
         dcc.Dropdown(
             id='dropdown2',
-            options=[{'label': i, 'value': i} for i in [ 1.,  3.,  2.,  5.,  4., 13., -1.,  8.,  9., 12.,  7.]]
-        ),
-        html.Label('Input Your Meter ID'),
-        dcc.Input(id='box1',type='number',style={'width':'95%','display':'inline-block'})
-    ],
-    style={'width': '14%','display': 'inline-block'}),
+            options=[{'label': i, 'value': i} for i in [ 1.,  3.,  2.,  5.,  4., 13., -1.,  8.,  9., 12.,  7.]],
+            style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
+    ]),
+        html.Label('Result:',style={'color':'red','font-size':'15px'}),
+        html.Div(id='tablecontainer',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
+    ])
 
-    html.Div(id='tablecontainer',style={'fontWeight':'bold','backgroundColor':'rgb(248,248,248)'})
-])
 
 @app.callback(
     dash.dependencies.Output('tablecontainer', 'children'),
@@ -67,7 +79,7 @@ def update_table(dropdown1,dropdown2,box1):
         return generate_table(dff)
     elif box1 is None:
         if dropdown1 is None and dropdown2 is None:
-            return generate_table(df)
+            return 'Please input a right meter ID.'
         else:
             dff = df[(df.Meter_size==dropdown1)]
             dff = dff[(dff.Cust_type_code==dropdown2)] 
@@ -80,4 +92,3 @@ app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-    
