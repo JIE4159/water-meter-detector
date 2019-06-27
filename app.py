@@ -14,7 +14,7 @@ import pandas as pd
 
 df = pd.read_csv(results1.csv')
 
-def generate_table(dataframe, max_rows=10):
+def generate_table(dataframe):
     return html.Table(
         # Header
         [html.Tr([html.Th(col) for col in dataframe.columns])] +
