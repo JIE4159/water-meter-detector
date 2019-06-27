@@ -5,6 +5,7 @@ Created on Tue Jun 25 17:29:12 2019
 @author: xiong
 """
 
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -13,9 +14,9 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-df = pd.read_csv(results1.csv')
+df = pd.read_csv('results1.csv')
 
-def generate_table(dataframe, max_rows=10):
+def generate_table(dataframe, max_rows=len(df)):
     return html.Table(
         # Header
         [html.Tr([html.Th(col) for col in dataframe.columns])] +
