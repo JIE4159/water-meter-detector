@@ -14,7 +14,8 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-df = pd.read_csv('results1.csv')
+df = pd.read_csv(
+    'C:/Users/xiong/Desktop/dash_app_example/results1.csv')
 
 def generate_table(dataframe, max_rows=len(df)):
     return html.Table(
@@ -38,7 +39,7 @@ specification of Markdown.
 Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
 if this is your first introduction to Markdown!
 '''
-app.layout = html.Div([
+app.layout = html.Div(style={'backgroundColor':'080808'},children=[
     html.H1(
         children='Smart Meter: Anomaly Detector',
         style={
@@ -50,7 +51,7 @@ app.layout = html.Div([
     html.Div([
                     
         html.Label('Input Your Meter ID'),
-        dcc.Input(id='box1',type='number',style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"}),
+        dcc.Input(id='box1',type='text',value=None,style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"},placeholder="Input Your Meter ID"),
         html.Label('OR',style={'color':'red','font-size':'15px'}),
         html.Label('Select Your Meter Size'),
         dcc.Dropdown(
@@ -65,23 +66,28 @@ app.layout = html.Div([
             style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
     ]),
         html.Label('Result:',style={'color':'red','font-size':'15px'}),
-        html.Div(id='tablecontainer',value='',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
+        html.Div(id='tablecontainer',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
     ])
 
-
+ 
 @app.callback(
     dash.dependencies.Output('tablecontainer', 'children'),
     [dash.dependencies.Input('dropdown1', 'value'),
     dash.dependencies.Input('dropdown2', 'value'),
-    dash.dependencies.Input('box1', 'value')])   
-    
+    dash.dependencies.Input('box1', 'value')])  
+
+
 def update_table(dropdown1,dropdown2,box1):
     if box1 is not None:
-        dff=df[df.Meter_id==box1]
-        return generate_table(dff)
+        box2=float(box1)
+        if box2 in (set(df.Meter_id)):
+            dff=df[df.Meter_id==box2]
+            return generate_table(dff)
+        else:
+            return 'Please input a right meter ID.'
     elif box1 is None:
         if dropdown1 is None and dropdown2 is None:
-            return 'Please input a right meter ID.'
+            return generate_table(df)
         else:
             dff = df[(df.Meter_size==dropdown1)]
             dff = dff[(dff.Cust_type_code==dropdown2)] 
