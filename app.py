@@ -48,19 +48,19 @@ app.layout = html.Div([
     html.Div([
                     
         html.Label('Input Your Meter ID'),
-        dcc.Input(id='box1',type='number',style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"}),
+        dcc.Input(id='box1',type='number',style={'width': '50%', 'display': 'inline-block', 'verticalAlign': "middle"}),
         html.Label('OR',style={'color':'red','font-size':'15px'}),
         html.Label('Select Your Meter Size'),
         dcc.Dropdown(
             id='dropdown1',
             options=[{'label': i, 'value': i} for i in [ 1.   ,  3.   ,  0.625,  2.   ,  4.   ,  0.75 ,  1.5  ,  6.   ,
-       10.   ,  8. ]],style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"}),
+       10.   ,  8. ]],style={'width': '50%', 'display': 'inline-block', 'verticalAlign': "middle"}),
     
         html.Label('Select Your Customer Type'),
         dcc.Dropdown(
             id='dropdown2',
             options=[{'label': i, 'value': i} for i in [ 1.,  3.,  2.,  5.,  4., 13., -1.,  8.,  9., 12.,  7.]],
-            style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
+            style={'width': '50%', 'display': 'inline-block', 'verticalAlign': "middle"})      
     ]),
         html.Label('Result:',style={'color':'red','font-size':'15px'}),
         html.Div(id='tablecontainer',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
