@@ -14,7 +14,7 @@ import pandas as pd
 
 df = pd.read_csv('results1.csv')
 
-def generate_table(dataframe):
+def generate_table(dataframe, max_rows):
     return html.Table(
         # Header
         [html.Tr([html.Th(col) for col in dataframe.columns])] +
@@ -48,7 +48,7 @@ app.layout = html.Div([
     html.Div([
                     
         html.Label('Input Your Meter ID'),
-        dcc.Input(id='box1',type='number',style={'width': '50%', 'display': 'inline-block', 'verticalAlign': "middle"}),
+        dcc.Input(id='box1',type='number',style={'display': 'inline-block', 'verticalAlign': "middle"}),
         html.Label('OR',style={'color':'red','font-size':'15px'}),
         html.Label('Select Your Meter Size'),
         dcc.Dropdown(
