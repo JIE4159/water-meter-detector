@@ -27,15 +27,7 @@ def generate_table(dataframe, max_rows=10):
    
 app = dash.Dash()
 server=app.server
-app.config['suppress_callback_exceptions']=True
-markdown_text = '''
-### Dash Title Here
 
-Dash uses the [CommonMark](http://commonmark.org/)
-specification of Markdown.
-Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
-if this is your first introduction to Markdown!
-'''
 app.layout = html.Div([
     html.H1(
         children='Smart Meter: Anomaly Detector',
