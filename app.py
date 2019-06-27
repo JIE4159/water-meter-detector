@@ -50,7 +50,7 @@ app.layout = html.Div(style={'backgroundColor':'080808'},children=[
     html.Div([
                     
         html.Label('Input Your Meter ID'),
-        dcc.Input(id='box1',type='text',value=None,style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"},placeholder="Input Your Meter ID"),
+        dcc.Input(id='box1',type='number',value=None,style={'width': '16%', 'display': 'inline-block', 'verticalAlign': "middle"},placeholder="Input Your Meter ID"),
         html.Label('OR',style={'color':'red','font-size':'15px'}),
         html.Label('Select Your Meter Size'),
         dcc.Dropdown(
