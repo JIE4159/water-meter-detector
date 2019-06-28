@@ -36,7 +36,7 @@ specification of Markdown.
 Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
 if this is your first introduction to Markdown!
 '''
-app.layout = html.Div(style={'color':'080808'},children=[
+app.layout = html.Div(style={'color':'#FF5E5E'},children=[
     html.H1(
         children='Smart Meter: Anomaly Detector',
         style={
@@ -60,7 +60,7 @@ app.layout = html.Div(style={'color':'080808'},children=[
         html.Label('Select Your Customer Type'),
         dcc.Dropdown(
             id='dropdown2',
-            options=[{'label': i, 'value': i} for i in [ 1.,  3.,  2.,  5.,  4., 13., -1.,  8.,  9., 12.,  7.]],
+            options=[{'label': i, 'value': i} for i in [ 1,  3.,  2.,  5.,  4., 13., -1.,  8.,  9., 12.,  7.]],
             style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
     ]),
         html.Label('Result:',style={'color':'red','font-size':'15px'}),
