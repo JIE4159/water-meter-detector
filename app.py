@@ -36,7 +36,7 @@ specification of Markdown.
 Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
 if this is your first introduction to Markdown!
 '''
-app.layout = html.Div(style={'color':'#FF5E5E'},children=[
+app.layout = html.Div(style={'backgroundColor':'#FF5E5E'},children=[
     html.H1(
         children='Smart Meter: Anomaly Detector',
         style={
