@@ -64,7 +64,7 @@ app.layout = html.Div(children=[
             style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
     ]),
         html.Label('Result:',style={'color':'red','font-size':'15px'}),
-        html.Div(id='tablecontainer',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'center'})
+        html.Div(id='tablecontainer',style={'border-style': 'solid', 'padding': '0 20','text-indent': '5%', 'textAlign': 'left'})
     ])
 
  
@@ -87,7 +87,7 @@ def update_table(dropdown1,dropdown2,box1):
             return generate_table(df)
         else:
             dff = df[(df.Meter_size==dropdown1)]
-            dff = dff[(dff.Cust_type_code==dropdown2)] 
+            dff = dff[(dff.Cust_type==dropdown2)] 
             return generate_table(dff)
 
 if __name__ == '__main__':
