@@ -60,7 +60,7 @@ app.layout = html.Div(children=[
         html.Label('Select Your Customer Type'),
         dcc.Dropdown(
             id='dropdown2',
-            options=[{'label': i, 'value': i} for i in [ 1,  3.,  2.,  5.,  4., 13., -1.,  8.,  9., 12.,  7.]],
+            options=[{'label': i, 'value': i} for i in ['CONSOLIDATED','RESIDENTIAL','MULTI-FAMILY','COMMERCIAL','BOAT DOCK','CITY','HOTEL','HOSPITAL','COLLEGE AND UNIVERSITY','SPRINKLER','POOL']],
             style={'width': '40%', 'display': 'inline-block', 'verticalAlign': "middle"})      
     ]),
         html.Label('Result:',style={'color':'red','font-size':'15px'}),
